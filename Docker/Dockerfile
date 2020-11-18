@@ -1,23 +1,19 @@
-FROM ubuntu:latest
-# MAINTAINER Ron Haber
+FROM ubuntu:18.04
+
+LABEL maintainer="Ron Haber"
 
 RUN apt-get update && apt-get install -y python3 python3-pip python-dev
 RUN apt-get install -y git
 
 COPY ./Tokens/access_token /bin/
-ARG TOK=
-RUN TOKEN=`cat bin/access_token`
-RUN echo $TOKEN
+ARG token=0
 
-# # RUN git config --global url."https://{$TOKEN}@github.com/".insteadOf "https://github.com/" files to docker
-# RUN git clone "https://{$TOKEN}:github.com/haberrj/CryptoCurrency.git"
+RUN git clone "https://haberrj:${token}@github.com/haberrj/dockerized_binance.git"
 
-# RUN rm /bin/access_token \
-#     TOKEN = ""
+WORKDIR /dockerized_binance/
 
-# WORKDIR /CryptoCurrency/
-
-# RUN pip3 install requirements.txt
+RUN git remote set-url origin "https://haberrj:${token}@github.com/haberrj/dockerized_binance.git"
+RUN pip3 install -r requirements.txt
 
 # # Some code here will run the app or setup the cronjob
 # # will need to replace the cronjob document
