@@ -2,11 +2,11 @@ FROM ubuntu:18.04
 
 LABEL maintainer="Ron Haber"
 
-RUN apt-get update && apt-get install -y python3 python3-pip python-dev
+RUN apt-get update && apt-get install -y python-dev python3-pip
 RUN apt-get install -y git
 
 COPY ./Tokens/access_token /bin/
-ARG token=
+ARG token=0
 
 RUN git clone "https://haberrj:${token}@github.com/haberrj/dockerized_binance.git"
 
