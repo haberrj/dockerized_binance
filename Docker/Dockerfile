@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y python3 python3-pip python-dev
 RUN apt-get install -y git
 
 COPY ./Tokens/access_token /bin/
-ARG token=0
+ARG token=
 
 RUN git clone "https://haberrj:${token}@github.com/haberrj/dockerized_binance.git"
 
@@ -19,4 +19,4 @@ RUN pip3 install -r requirements.txt
 # # will need to replace the cronjob document
 
 # ENTRYPOINT [ "bash" ]
-# CMD [ "/Crontabs/mock_execution_binance.sh" ]
+# CMD [ "/Crontabs/mock_execution_binance.sh" ]git a
