@@ -19,7 +19,7 @@ WORKDIR /dockerized_binance/
 RUN git remote set-url origin "https://haberrj:${token}@github.com/haberrj/dockerized_binance.git"
 RUN pip3 install -r requirements.txt
 
-RUN chmod +x /dockerized_binance/allow_all.sh
+RUN chmod +x /dockerized_binance/Crontabs/allow_all.sh
 RUN chmod 0644 /etc/cron.d/cron
 
 RUN crontab /etc/cron.d/cron
