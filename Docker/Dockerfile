@@ -1,12 +1,16 @@
-FROM ubuntu:18.04
+FROM ubuntu:latest
 
 LABEL maintainer="Ron Haber"
 
 RUN apt-get update && apt-get install -y python-dev python3-pip
-RUN apt-get install -y git
+RUN apt-get install -y git cron
 
-COPY ./Tokens/access_token /bin/
+COPY cron /etc/cron.d/cron
+
 ARG token=0
+
+ENV API_PUBLIC=0
+ENV API_SECRET=0
 
 RUN git clone "https://haberrj:${token}@github.com/haberrj/dockerized_binance.git"
 
@@ -15,8 +19,12 @@ WORKDIR /dockerized_binance/
 RUN git remote set-url origin "https://haberrj:${token}@github.com/haberrj/dockerized_binance.git"
 RUN pip3 install -r requirements.txt
 
-# # Some code here will run the app or setup the cronjob
-# # will need to replace the cronjob document
+RUN chmod +x allow_all.sh
+RUN chmod 0644 /etc/cron.d/cron
+
+RUN crontab /etc/cron.d/cron
+RUN touch /var/log/cron.log
+CMD cron && tail -f /var/log/cron.log
 
 # ENTRYPOINT [ "bash" ]
 # CMD [ "/Crontabs/mock_execution_binance.sh" ]git a
