@@ -88,7 +88,6 @@ def ExecuteRealTime(client, data_direc, info, actual_cash):
         bid = value["bid"]
         ask = value["ask"]
         commission = value["commission"]
-        print("commission: ", commission)
         print(name)
         print("balance: ", balance)
         coin = ct.Currency(name, data_direc, commission, price, cash, balance, bid, ask) 
@@ -182,10 +181,10 @@ def CheckOrderStatuses(client, direc, orders):
             try:
                 new_info = client.GetOrderDetails(id_num, name)
                 quantity = new_info["executedQty"]
-                cash = float(new_info["cummulativeQuoteQty"])
+                cash = float(new_info["cummulativeQuoteQty"]) - 1.0 # This prevents the constant loss of cash to over buying
             except:
                 quantity = order["coin"]
-                cash = float(price) * float(quantity)
+                cash = (float(price) * float(quantity)) - 1.0 
             balance_direc = direc + "Actual/Balances/"
             if(cash < 0):
                 cash = float(price) * float(quantity)

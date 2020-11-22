@@ -34,8 +34,8 @@ class Crypto:
             for value in history_values: 
                 holder.append(value)
             size = len(holder)
-            if(size > 10000): # Amount of data points to check
-                for i in range(size-10000, size): # doing this to above gives problems due to DictReader
+            if(size > 1000): # Amount of data points to check
+                for i in range(size-1000, size): # doing this to above gives problems due to DictReader
                     new_holder.append(holder[i]) # more relevant data this way
             else:
                 new_holder = holder

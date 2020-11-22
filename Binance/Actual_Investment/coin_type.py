@@ -72,7 +72,6 @@ class Currency:
             last_transaction_type = str(transactions[0]["type"]).upper()
         except ValueError:
             last_transaction_type = "SELL"
-        print(price)
         return price, last_transaction_type
 
     def ReadPreviousTransactions(self):
@@ -165,10 +164,16 @@ class Currency:
         first_val = self.FirstDerivative()
         second_val = self.SecondDerivative(first_val)
         self.thresholds = self.GetThresholds()
+        print("Current holding price: ", self.current_holding_price)
+        print("Last transaction type: ", self.last_transaction_type)
+        print("Current bid price: ", self.current_bid)
+        print("Thresholds: ", self.thresholds)
+        print("First deriv: ", first_val[0])
+        print("Second deriv: ", second_val)
         action = 0
         quantity = self.coin
-        if((self.name == "LINK") or (self.name == "BNB")):
-            sell_off = 0.95
+        if((self.name == "LINK")):
+            sell_off = 0.97 # to prevent loss due to volatility
         else:
             sell_off = 0.95
         if(self.last_transaction_type == "SELL"): # Buy
@@ -241,7 +246,7 @@ class Currency:
         total_comm = previous_commission + current_commission
         revenue = current_price - last_price
         profit = revenue - total_comm
-        if(profit >= 0):
+        if(profit >= commission):
             # This will make the system only choose profitable transactions
             return True
         else:
