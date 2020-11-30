@@ -1,4 +1,5 @@
 SHELL=/bin/bash
-*/1 * * * * /dockerized_binance/Crontabs/real_binance_trading.sh
+# */1 * * * * /dockerized_binance/Crontabs/real_binance_trading.sh
+*/1 * * * * /dockerized_binance/Crontabs/binance_other_coins.sh
 */3 * * * * /dockerized_binance/Crontabs/allow_all.sh
-30 */3 * * * /dockerized_binance/Crontabs/binance_thresholds.sh
+30 2 * * * /dockerized_binance/Crontabs/binance_thresholds.sh

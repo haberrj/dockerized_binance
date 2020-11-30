@@ -110,18 +110,18 @@ def ExecuteRealTime(client, data_direc, info, actual_cash):
             else:
                 quantity = "{:0.0{}f}".format(float(cash/new_price), 3)
             print("quantity: ", quantity)
-            order_info = client.BuyItem(name, quantity)
-            order_info["price"] = new_price
-            # order_info = client.TestOrder("buy", name, quantity)
-            # order_info = {
-            #     "time": "0",
-            #     "name": name,
-            #     "id": "0",
-            #     "price": new_price,
-            #     "status": "FILLED",
-            #     "coin": quantity,
-            #     "type": "BUY"
-            # }
+            # order_info = client.BuyItem(name, quantity)
+            # order_info["price"] = new_price
+            order_info = client.TestOrder("buy", name, quantity)
+            order_info = {
+                "time": "0",
+                "name": name,
+                "id": "0",
+                "price": new_price,
+                "status": "FILLED",
+                "coin": quantity,
+                "type": "BUY"
+            }
             if(order_info == False):
                 print("Insufficient Funds")
         elif(action == 2):
@@ -134,18 +134,18 @@ def ExecuteRealTime(client, data_direc, info, actual_cash):
             else:
                 quantity = "{:0.0{}f}".format(quantity, 3)
             print("quantity: ", quantity)
-            order_info = client.SellItem(name, quantity)
-            order_info["price"] = new_price
-            # order_info = client.TestOrder("sell", name, quantity)
-            # order_info = { 
-            #     "time": "0",
-            #     "name": name,
-            #     "id": "0",
-            #     "price": new_price,
-            #     "status": "FILLED",
-            #     "coin": quantity,
-            #     "type": "SELL"
-            # }
+            # order_info = client.SellItem(name, quantity)
+            # order_info["price"] = new_price
+            order_info = client.TestOrder("sell", name, quantity)
+            order_info = { 
+                "time": "0",
+                "name": name,
+                "id": "0",
+                "price": new_price,
+                "status": "FILLED",
+                "coin": quantity,
+                "type": "SELL"
+            }
             if(order_info == False):
                 print("Error with order")
         order_info_array.append(order_info)
@@ -229,7 +229,7 @@ def WriteTransactionInfo(direc, name, order):
     return filename
     
 if __name__ == "__main__":
-    API_key_direc = "/media/pi/HaberServer/Crypto_Share/API_Utils/Binance/"
+    API_key_direc = "/bin/api_keys/"
     actual_home = home + "Actual/"
     client = au.API_Client(API_key_direc, False)
     info, actual_cash = GetCoinInfo(client, names, actual_home) # Gets the price of the asset

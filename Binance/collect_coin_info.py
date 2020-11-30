@@ -64,7 +64,7 @@ def WriteHistoryCSV(direc, client, coins):
     return files
 
 if __name__ == "__main__":
-    API_key_direc = "/media/pi/HaberServer/Crypto_Share/API_Utils/Binance/"
+    API_key_direc = "/bin/api_keys/"
     client = au.API_Client(API_key_direc, False)
     info = GetCoinInfo(client, names) # Gets the price of the asset
     # Write a history file for the orders. Putting it here to make sure everything gets logged

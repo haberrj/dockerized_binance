@@ -98,7 +98,7 @@ def ExecuteRealTimeDemo(names, data_direc, commission):
     return execs
 
 if __name__ == "__main__":
-    API_key_direc = "/media/pi/HaberServer/Crypto_Share/API_Utils/Binance/"
+    API_key_direc = "/bin/api_keys/"
     client = au.API_Client(API_key_direc, False)
     info = GetCoinInfo(client, names)
     files = WriteHistoryCSV(home, client, info)

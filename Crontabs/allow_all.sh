@@ -4,3 +4,4 @@
 
 chmod +x /dockerized_binance/Crontabs/binance_thresholds.sh
 chmod +x /dockerized_binance/Crontabs/real_binance_trading.sh
+chmod +x /dockerized_binance/Crontabs/binance_other_coins.sh
