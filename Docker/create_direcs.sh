@@ -5,14 +5,15 @@
 cd /
 
 mkdir /Artifacts
-cd /Artifacts/
+
 # Create Subfolders
-mkdir /Json_Output_Data
-mkdir /Json_Transaction_Data
-mkdir /Actual
+mkdir /Artifacts/Json_Output_Data
+mkdir /Artifacts/Json_Transaction_Data
+mkdir /Artifacts/logs
+mkdir /Artifacts/Actual
 # Actual
-cd /Artifacts/Actual/
-mkdir /Balances
-mkdir /CSV_Transactions
-mkdir /Json_Transaction_Data
-mkdir /Predicted_Data
+mkdir /Artifacts/Actual/Balances
+mkdir /Artifacts/Actual/CSV_Transactions
+mkdir /Artifacts/Actual/Json_Transaction_Data
+mkdir /Artifacts/Actual/Predicted_Data
+mkdir /License/

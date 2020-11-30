@@ -7,4 +7,4 @@ cd /home/pi/CryptoCurrency/
 now=$(date)
 echo $now
 
-python3 /home/pi/CryptoCurrency/Binance/collect_coin_info.py -d /media/pi/HaberServer/Crypto_Share/Binance/ -i LTC ADA XRP ADA SXP DOT
+python3 /dockerized_binance/Binance/collect_coin_info.py -d /Artifacts/ -i LTC ADA XRP ADA SXP DOT

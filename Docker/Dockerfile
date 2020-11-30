@@ -11,7 +11,7 @@ COPY create_direcs.sh /bin/create_direcs.sh
 
 RUN chmod +x /bin/api_keys.sh
 RUN chmod +x /bin/api_keys.sh
-RUN sh create_direcs.sh
+RUN sh /bin/create_direcs.sh
 
 ARG token=0
 
@@ -32,3 +32,4 @@ CMD cron && tail -f /var/log/cron.log
 RUN service cron start
 
 ENTRYPOINT [ "/bin/api_keys.sh" ]
+CMD ["cron", "-f"]
