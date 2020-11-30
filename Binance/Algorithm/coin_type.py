@@ -234,7 +234,7 @@ class Currency:
         total_comm = previous_commission + current_commission
         revenue = current_price - last_price
         profit = revenue - total_comm
-        if(profit >= 0):
+        if(profit >= commission):
             # This will make the system only choose profitable transactions
             return True
         else:

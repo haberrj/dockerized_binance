@@ -173,7 +173,7 @@ class Currency:
         action = 0
         quantity = self.coin
         if((self.name == "LINK")):
-            sell_off = 0.97 # to prevent loss due to volatility
+            sell_off = 0.95 # to prevent loss due to volatility
         else:
             sell_off = 0.95
         if(self.last_transaction_type == "SELL"): # Buy

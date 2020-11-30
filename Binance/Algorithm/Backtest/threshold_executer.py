@@ -81,9 +81,9 @@ if __name__ == "__main__":
     print("The ideal thresholds are: ", threshold)
     print("That will produce a max amount of: ", "{:,.2f}".format(amount), "€")
     if(currency_type == "BTC"):
-        sample = 67
+        sample = 2
     elif(currency_type == "ETH"):
-        sample = 67
+        sample = 2
     elif(currency_type == "BNB"):
         sample = 2
     else: # Link
