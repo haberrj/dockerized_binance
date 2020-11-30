@@ -6,13 +6,15 @@ RUN apt-get update && apt-get install -y python-dev python3-pip
 RUN apt-get install -y git cron
 
 COPY cron /etc/cron.d/cron
+COPY api_keys.sh /bin/api_keys.sh
+
+RUN chmod +x /bin/api_keys.sh
 
 ARG token=0
 
-ENV API_PUBLIC=0
-ENV API_SECRET=0
-
 RUN git clone "https://haberrj:${token}@github.com/haberrj/dockerized_binance.git"
+
+RUN mkdir /Artifacts
 
 WORKDIR /dockerized_binance/
 
@@ -26,5 +28,4 @@ RUN crontab /etc/cron.d/cron
 RUN touch /var/log/cron.log
 CMD cron && tail -f /var/log/cron.log
 
-# ENTRYPOINT [ "bash" ]
-# CMD [ "/Crontabs/mock_execution_binance.sh" ]git a
+ENTRYPOINT [ "/bin/api_keys.sh" ]
