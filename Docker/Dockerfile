@@ -23,12 +23,9 @@ RUN git remote set-url origin "https://haberrj:${token}@github.com/haberrj/docke
 RUN pip3 install -r requirements.txt
 
 RUN chmod +x /dockerized_binance/Crontabs/allow_all.sh
+
 RUN chmod 0644 /etc/cron.d/cron
-
 RUN crontab /etc/cron.d/cron
-RUN touch /var/log/cron.log
-CMD cron && tail -f /var/log/cron.log
-
 RUN service cron start
 
 ENTRYPOINT [ "/bin/api_keys.sh" ]
