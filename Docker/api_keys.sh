@@ -24,6 +24,15 @@ then
     echo "$secret" > "$secret_direc"
 fi
 
+# Will check licensing here
+#
+# License script or close the docker
+#
+
+# cron related setup
+touch /etc/crontab /etc/cron.*/*
+service cron start
+
 while true # This is an infinite loop to keep the docker up
 do
     sleep 1

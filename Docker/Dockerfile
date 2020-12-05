@@ -24,9 +24,8 @@ RUN pip3 install -r requirements.txt
 
 RUN chmod +x /dockerized_binance/Crontabs/allow_all.sh
 
-RUN chmod 0644 /etc/cron.d/cron
+RUN chmod +x /etc/cron.d/cron
 RUN crontab /etc/cron.d/cron
-RUN service cron start
 
 ENTRYPOINT [ "/bin/api_keys.sh" ]
 CMD ["cron", "-f"]

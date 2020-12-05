@@ -13,3 +13,5 @@ def GetLicenseInfo():
         license_val = secret.read()
         license_key = license_val[:-1]
     return license_key
+
+# Need to write code to read the license file
